@@ -11,7 +11,6 @@ import {
   Form,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
-import axios from "axios";
 import { listProductDetails } from "../actions/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -24,7 +23,7 @@ const ProductScreen = ({ history, match }) => {
   const { loading, error, product } = productDetails;
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
-  }, [dispatch]);
+  }, [dispatch, match.params.id]);
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
